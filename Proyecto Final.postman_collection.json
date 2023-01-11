@@ -11,8 +11,11 @@
 			"item": [
 				{
 					"name": "Login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -44,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"name\": \"nombreTest1\",\r\n    \"address\": \"Calle falsa 123\",\r\n    \"age\": 22,\r\n    \"phone\": \"+54 1167876544\",\r\n    \"photo\": \"https://assets.puzzlefactory.pl/puzzle/353/899/original.jpg\"\r\n}",
+							"raw": "{\r\n    \"email\": \"prueba1@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"name\": \"nombreTest1\",\r\n    \"address\": \"Calle falsa 123\",\r\n    \"age\": 22,\r\n    \"phone\": \"+54 1167876544\",\r\n    \"photo\": \"https://assets.puzzlefactory.pl/puzzle/353/899/original.jpg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -114,6 +117,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Home",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/home",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ruta Base",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090"
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -127,7 +165,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idProducto\": \"63b6df93eddfc29bed560e0b\",\r\n    \"idCarrito\": \"63b6f0d1508368e8dfd62860\",\r\n    \"cantidad\": 5\r\n}",
+							"raw": "{\r\n    \"idProducto\": \"63b6df93eddfc29bed560e0b\",\r\n    \"idCarrito\": \"63bec6668b018644e5f1684e\",\r\n    \"cantidad\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -154,7 +192,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9090/carrito/63b6f0d1508368e8dfd62860",
+							"raw": "http://localhost:9090/carrito/63bec6668b018644e5f1684e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -162,7 +200,7 @@
 							"port": "9090",
 							"path": [
 								"carrito",
-								"63b6f0d1508368e8dfd62860"
+								"63bec6668b018644e5f1684e"
 							]
 						}
 					},
@@ -205,7 +243,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"camisa\",\r\n    \"price\": 100,\r\n    \"category\": \"Indumentaria\",\r\n    \"photo\": \"foto camisa\"\r\n}",
+							"raw": "{\r\n    \"description\": \"remera\",\r\n    \"price\": 50,\r\n    \"category\": \"Indumentaria\",\r\n    \"photo\": \"foto remera\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -213,7 +251,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:9090/productos?admin=false",
+							"raw": "http://localhost:9090/productos?admin=true",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -225,7 +263,7 @@
 							"query": [
 								{
 									"key": "admin",
-									"value": "false"
+									"value": "true"
 								}
 							]
 						}
@@ -266,6 +304,67 @@
 							"path": [
 								"productos",
 								"63b6df93eddfc29bed560e0b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/productos/63b6df93eddfc29bed560e0b?admin=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"productos",
+								"63b6df93eddfc29bed560e0b"
+							],
+							"query": [
+								{
+									"key": "admin",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"category modificacion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/productos/63beccf12b3dfda9d2c234ba?admin=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"productos",
+								"63beccf12b3dfda9d2c234ba"
+							],
+							"query": [
+								{
+									"key": "admin",
+									"value": "true"
+								}
 							]
 						}
 					},
